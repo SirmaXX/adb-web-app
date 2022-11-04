@@ -27,18 +27,55 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">import subprocess
+import os
 
 
 
-def getdevices():
+
+def StartServer():
  &#34;&#34;&#34;
-    cihazları gösteren yapı
+    server başlatan fonksiyon
+ &#34;&#34;&#34;
+ subprocess.run([&#34;adb&#34;, &#34;start-server&#34;])
+
+
+def KillServer():
+ &#34;&#34;&#34;
+    server durduran fonksiyon
+ &#34;&#34;&#34;
+ subprocess.run([&#34;adb&#34;, &#34;kill-server&#34;])
+
+
+
+def GetDevices():
+ &#34;&#34;&#34;
+    cihazları gösteren fonksiyon
  &#34;&#34;&#34;
  subprocess.run([&#34;adb&#34;, &#34;devices&#34;])
 
 
 
-getdevices()</code></pre>
+def GetDevicesDetailed():
+ &#34;&#34;&#34;
+    cihazları gösteren detaylı fonksiyon
+ &#34;&#34;&#34;
+ subprocess.run([&#34;adb&#34;, &#34;devices&#34;,&#34;-l&#34;])
+
+
+
+def PackageList():
+   &#34;&#34;&#34;
+    yüklü paketleri gösteren fonksiyon
+   &#34;&#34;&#34;
+   cmd = &#34;adb shell pm list packages&#34;
+   returned_value = os.system(cmd)  # returns the exit code in unix
+   print(&#39;returned value:&#39;, returned_value)
+
+ 
+
+
+
+StartServer()</code></pre>
 </details>
 </section>
 <section>
@@ -48,20 +85,86 @@ getdevices()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="lib.getdevices"><code class="name flex">
-<span>def <span class="ident">getdevices</span></span>(<span>)</span>
+<dt id="lib.GetDevices"><code class="name flex">
+<span>def <span class="ident">GetDevices</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>cihazları gösteren yapı</p></div>
+<div class="desc"><p>cihazları gösteren fonksiyon</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def getdevices():
+<pre><code class="python">def GetDevices():
  &#34;&#34;&#34;
-    cihazları gösteren yapı
+    cihazları gösteren fonksiyon
  &#34;&#34;&#34;
  subprocess.run([&#34;adb&#34;, &#34;devices&#34;])</code></pre>
+</details>
+</dd>
+<dt id="lib.GetDevicesDetailed"><code class="name flex">
+<span>def <span class="ident">GetDevicesDetailed</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>cihazları gösteren detaylı fonksiyon</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GetDevicesDetailed():
+ &#34;&#34;&#34;
+    cihazları gösteren detaylı fonksiyon
+ &#34;&#34;&#34;
+ subprocess.run([&#34;adb&#34;, &#34;devices&#34;,&#34;-l&#34;])</code></pre>
+</details>
+</dd>
+<dt id="lib.KillServer"><code class="name flex">
+<span>def <span class="ident">KillServer</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>server durduran fonksiyon</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KillServer():
+ &#34;&#34;&#34;
+    server durduran fonksiyon
+ &#34;&#34;&#34;
+ subprocess.run([&#34;adb&#34;, &#34;kill-server&#34;])</code></pre>
+</details>
+</dd>
+<dt id="lib.PackageList"><code class="name flex">
+<span>def <span class="ident">PackageList</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>yüklü paketleri gösteren fonksiyon</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PackageList():
+   &#34;&#34;&#34;
+    yüklü paketleri gösteren fonksiyon
+   &#34;&#34;&#34;
+   cmd = &#34;adb shell pm list packages&#34;
+   returned_value = os.system(cmd)  # returns the exit code in unix
+   print(&#39;returned value:&#39;, returned_value)</code></pre>
+</details>
+</dd>
+<dt id="lib.StartServer"><code class="name flex">
+<span>def <span class="ident">StartServer</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>server başlatan fonksiyon</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartServer():
+ &#34;&#34;&#34;
+    server başlatan fonksiyon
+ &#34;&#34;&#34;
+ subprocess.run([&#34;adb&#34;, &#34;start-server&#34;])</code></pre>
 </details>
 </dd>
 </dl>
@@ -77,7 +180,11 @@ getdevices()</code></pre>
 <ul id="index">
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="lib.getdevices" href="#lib.getdevices">getdevices</a></code></li>
+<li><code><a title="lib.GetDevices" href="#lib.GetDevices">GetDevices</a></code></li>
+<li><code><a title="lib.GetDevicesDetailed" href="#lib.GetDevicesDetailed">GetDevicesDetailed</a></code></li>
+<li><code><a title="lib.KillServer" href="#lib.KillServer">KillServer</a></code></li>
+<li><code><a title="lib.PackageList" href="#lib.PackageList">PackageList</a></code></li>
+<li><code><a title="lib.StartServer" href="#lib.StartServer">StartServer</a></code></li>
 </ul>
 </li>
 </ul>
