@@ -43,8 +43,13 @@ def PackageList():
    returned_value = os.system(cmd)  # returns the exit code in unix
    print('returned value:', returned_value)
 
- 
 
 
+def İnstallApp(file):
+   """
+    apk yükler
+   """
+   subprocess.run(["adb", "install","-g",file])
 
-StartServer()
+
+İnstallApp("apps/app-debug1.apk")
