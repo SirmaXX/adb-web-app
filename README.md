@@ -13,3 +13,9 @@
 
 ## döküman oluşturma
 pdoc --html ./lib.py -o ./Docs --force
+
+
+## ip ekleme
+adb tcpip 5555
+adb connect 192.168.0.11:5555
+adb devices
