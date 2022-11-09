@@ -19,3 +19,7 @@ pdoc --html ./lib.py -o ./Docs --force
 adb tcpip 5555
 adb connect 192.168.0.11:5555
 adb devices
+
+
+## Shell kullanımı(örnek)
+source shell.sh ;DetailDevices
