@@ -23,3 +23,7 @@ adb devices
 
 ## Shell kullanımı(örnek)
 source shell.sh ;DetailDevices
+
+
+## uygulama baslatma (root olmak gerekli)
+https://stackoverflow.com/questions/4567904/how-to-start-an-application-using-android-adb-tools/4567928#4567928
