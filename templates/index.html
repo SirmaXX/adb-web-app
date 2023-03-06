@@ -1,0 +1,128 @@
+
+
+
+
+{% extends "layout.html" %}
+{% block body %}
+<div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">RUBU ADB SHELL</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                Open modal
+              </button>
+
+              <!-- The Modal -->
+              <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Modal Heading</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">Modal body..</div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal -->
+            </div>
+            <!--   <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button> -->
+          </div>
+        </div>
+
+        <!--  <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
+
+        <div class="container">
+          <!-- connect disconnect-->
+
+          <div class="row pt-3 pb-2 mb-3  border-bottom">
+            
+            <div class="col-md-6"> <input type="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="İp addresi"></div>
+            <div class="col-md-2">
+              
+             <form method="post" action="/submit"> 
+             
+             <button type="submit" name="button1"  class="btn btn-success" data-bs-dismiss="modal">
+                Connect
+              </button>
+
+              </form>
+
+
+            </div>
+
+            
+            <div class="col-md-2"> 
+              
+               <form method="post" action="/submit"> 
+              <button type="submit" name="button2"  class="btn btn-danger" data-bs-dismiss="modal">
+                Disconnect
+              </button>
+             </form>
+            </div>
+
+            <div class="col-md-2">
+              <div class="led-green ">A</div>
+
+              <div class="led-red-off">A</div>
+
+
+
+            </div>
+
+          </div>
+  <!-- connect disconnect-->
+
+
+  <!-- command line-->
+          <div class="row pt-3 pb-2 mb-3  border-bottom">
+            <div class="col"> <input type="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Komut Satırı"></div>
+            <div class="col"> <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                Run
+              </button>
+            </div>
+        
+         
+
+          </div>
+  <!-- command line-->
+  <!-- output --->
+          <div class="row pt-3 pb-2 mb-3  border-bottom">
+   
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Shell çıktıları</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+
+                {{ output }}
+          
+              </textarea>
+            </div>
+
+          </div>
+ <!-- output --->
+
+        </div>
+
+
+{% endblock %}
+
+
+   
+

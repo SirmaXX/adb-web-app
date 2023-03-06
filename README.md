@@ -17,7 +17,9 @@ pdoc --html ./lib.py -o ./Docs --force
 
 ## ip ekleme
 adb tcpip 5555
+
 adb connect 192.168.0.11:5555
+
 adb devices
 
 
@@ -27,3 +29,7 @@ source shell.sh ;DetailDevices
 
 ## uygulama baslatma (root olmak gerekli)
 https://stackoverflow.com/questions/4567904/how-to-start-an-application-using-android-adb-tools/4567928#4567928
+
+
+port tarat
+

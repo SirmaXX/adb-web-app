@@ -1,22 +1,18 @@
 import subprocess
 import os
-
+from subprocess import check_output
 
 
 
 def StartServer():
- """
-    server başlatan fonksiyon
- """
- subprocess.run(["adb", "start-server"])
-
+     try:
+       return  subprocess.run(["adb", "start-server"])
+     except:
+        return "server başlatılamadı"
 
 def KillServer():
- """
-    server durduran fonksiyon
- """
- subprocess.run(["adb", "kill-server"])
-
+   result =  subprocess.run(["adb", "kill-server"], capture_output=True, text=True)
+   return result.stdout
 
 
 def GetDevices():
@@ -31,7 +27,8 @@ def GetDevicesDetailed():
  """
     cihazları gösteren detaylı fonksiyon
  """
- subprocess.run(["adb", "devices","-l"])
+ result = subprocess.run(["adb", "devices","-l"], stdout=subprocess.PIPE)
+ return result.stdout.decode('utf-8')
 
 
 
@@ -41,6 +38,7 @@ def PackageList():
    """
    cmd = "adb shell pm list packages"
    returned_value = os.system(cmd)  # returns the exit code in unix
+   
    print('returned value:', returned_value)
 
 
@@ -52,4 +50,4 @@ def İnstallApp(file):
    subprocess.run(["adb", "install","-g",file])
 
 
-İnstallApp("apps/app-debug1.apk")
+
