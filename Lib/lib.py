@@ -1,8 +1,9 @@
 import subprocess
 import os
 from subprocess import check_output
+from ppadb.client import Client
 
-
+import json
 
 def StartServer():
      try:
@@ -13,6 +14,18 @@ def StartServer():
 def KillServer():
    result =  subprocess.run(["adb", "kill-server"], capture_output=True, text=True)
    return result.stdout
+
+
+#127.0.0.1
+#5037
+def connect_device(host,port):
+    StartServer()
+    adb = Client(host=host,port=port)
+    devices = adb.devices()
+    if len(devices) == 0:
+        return "No Devices Attached"
+    return devices[0]
+
 
 
 def GetDevices():
@@ -48,6 +61,15 @@ def İnstallApp(file):
     apk yükler
    """
    subprocess.run(["adb", "install","-g",file])
+
+
+def Run_Command(command):
+   cmd = command
+   output = os.popen(cmd).read()
+   packages = output.split('\n')
+   return  packages
+
+
 
 
 

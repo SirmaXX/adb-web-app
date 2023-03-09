@@ -7,8 +7,10 @@ from fastapi.responses import HTMLResponse,RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Optional,List
+
+#pyadb MIT lisansa sahip
 from ppadb.client import Client as AdbClient
-from Lib.lib import StartServer
+from Lib.lib import StartServer,connect_device,Run_Command
 import subprocess
 
 import json
@@ -36,15 +38,25 @@ async def logincheck(request: Request,username:str=Form(),password:str=Form()):
 
 
 
-@app.post("/submit")
+@app.post("/")
 async def submit(request: Request):
     form_data = await request.form()
     if "button1" in form_data:
-        output = StartServer()
-        return templates.TemplateResponse("index.html", {"request": request,"output":output})
+        output = connect_device('127.0.0.1',5037)
+        return templates.TemplateResponse("index.html", {"request": request,"output":output,"status":"Online"})
     elif "button2" in form_data:
         # Code to handle button2
         output = subprocess.check_output(['adb', 'kill-server'])
-        return templates.TemplateResponse("index.html", {"request": request,"output":output.decode()})
+        return templates.TemplateResponse("index.html", {"request": request,"output":output.decode(),"status":"Offline"})
     else:
         return {"message": "No button was clicked."}
+    
+
+
+
+@app.post("/cmd", description="kullanıcınun bilgilerini kontrol eden  fonksiyon ")
+async def commandline(request: Request,command:str=Form()):
+       output=Run_Command(command)
+       return templates.TemplateResponse("index.html", {"request": request,"output":output.decode(),"status":"Offline"})
+     
+       

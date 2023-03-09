@@ -56,7 +56,7 @@
                 aria-describedby="emailHelp" placeholder="İp addresi"></div>
             <div class="col-md-2">
               
-             <form method="post" action="/submit"> 
+             <form method="post" action="/"> 
              
              <button type="submit" name="button1"  class="btn btn-success" data-bs-dismiss="modal">
                 Connect
@@ -70,7 +70,7 @@
             
             <div class="col-md-2"> 
               
-               <form method="post" action="/submit"> 
+               <form method="post" action="/"> 
               <button type="submit" name="button2"  class="btn btn-danger" data-bs-dismiss="modal">
                 Disconnect
               </button>
@@ -78,10 +78,14 @@
             </div>
 
             <div class="col-md-2">
+
+              {% if status =="Online" %}        
               <div class="led-green ">A</div>
-
-              <div class="led-red-off">A</div>
-
+              <div class="square">A</div>
+              {% else %}
+              <div class="square ">A</div>
+              <div class="led-red-on">A</div>
+              {% endif %}
 
 
             </div>
@@ -91,17 +95,21 @@
 
 
   <!-- command line-->
+  {% if status =="Online" %}   
           <div class="row pt-3 pb-2 mb-3  border-bottom">
-            <div class="col"> <input type="email" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp" placeholder="Komut Satırı"></div>
-            <div class="col"> <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            <form method="post" action="/cmd"> 
+            <div class="col"> <input type="text" class="form-control" name="command" placeholder="Komut Satırı"></div>
+            <div class="col"> <button type="submit" class="btn btn-success" data-bs-dismiss="modal">
                 Run
               </button>
             </div>
         
-         
+          </form>
 
           </div>
+          {% else %}
+         <p> Lütfen Bağlantı kurunuz </p>
+          {% endif %}   
   <!-- command line-->
   <!-- output --->
           <div class="row pt-3 pb-2 mb-3  border-bottom">
