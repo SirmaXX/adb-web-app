@@ -38,6 +38,7 @@ async def api_index(request: Request):
 
 
 #async def submit(request: Request,url:str=Form(),port:str=Form()):
+"""
 @app.post("/")
 async def submit(request: Request):
     form_data = await request.form()
@@ -52,6 +53,25 @@ async def submit(request: Request):
     else:
         return {"message": "No button was clicked."}
     
+ """
+
+@app.post("/")
+async def submit(request: Request,host:str=Form(),port:str=Form()):
+    form_data = await request.form()
+    if "button1" in form_data:
+         portt=int(port)
+         #os.system("adb connect 127.0.0.1:5037")
+         command = 'adb connect %s:%d' % (host, portt)
+         os.system(command)
+         os.system('adb devices')
+         return templates.TemplateResponse("index.html", {"request": request,"output":"deneme","status":"Online",host:host,port:port})
+    elif "button2" in form_data:
+        # Code to handle button2
+        output = subprocess.check_output(['adb', 'kill-server'])
+        return templates.TemplateResponse("index.html", {"request": request,"status":"Offline"})
+    else:
+        return {"message": "No button was clicked."}
+
 
 
 
