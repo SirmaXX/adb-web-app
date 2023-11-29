@@ -24,6 +24,8 @@ adb devices
 
 
 ## Shell kullanımı(örnek)
+Lib klasörü içerisinden aşağıdaki komut satırı ile shelli çalıştırabilirsiniz
+
 source shell.sh ;DetailDevices
 
 
