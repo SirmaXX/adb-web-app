@@ -1,5 +1,10 @@
 # adb-web-app
 
+![alt text](adbwebinterface.png)
+
+
+
+
 # İhtiyaçlar
  Kullanıcı tarafından IP yazıldığı vakit aşağıdaki komutlar butonlar ile çalışacaktır.
  - SHUTDOWN,
